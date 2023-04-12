@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './ColorItem.scss';
 import { VscChromeClose } from 'react-icons/vsc';
-import Modal from '../modal/modal';
+import Modal from '../modal/Modal';
 
 interface Props {
     color: string;

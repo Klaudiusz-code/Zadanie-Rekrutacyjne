@@ -3,14 +3,24 @@ import './AddColorForm.scss';
 
 const AddColorForm = () => {
     const [colorValue, setColorValue] = useState('');
+    const [existingColors, setExistingColors] = useState<string[]>([]);
+
+    React.useEffect(() => {
+        const colorsFromLocalStorage = JSON.parse(localStorage.getItem('colors') || '[]');
+        setExistingColors(colorsFromLocalStorage);
+    }, []);
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         if (colorValue) {
             const hexColorRegex = /^#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$/;
             if (hexColorRegex.test(colorValue)) {
-                const colorsFromLocalStorage = JSON.parse(localStorage.getItem('colors') || '[]');
-                colorsFromLocalStorage.push(colorValue.toUpperCase());
+                if (existingColors.includes(colorValue.toUpperCase())) {
+                    alert('This color already exists!');
+                    return;
+                }
+
+                const colorsFromLocalStorage = [...existingColors, colorValue.toUpperCase()];
                 localStorage.setItem('colors', JSON.stringify(colorsFromLocalStorage));
                 setColorValue('');
                 window.location.reload();

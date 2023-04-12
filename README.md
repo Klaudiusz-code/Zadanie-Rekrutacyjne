@@ -8,8 +8,10 @@
 
 3. Zainstaluj wymagane zależności, wpisując w terminalu polecenie:
 
- npm install
+npm install
    
-4.Aby uruchomić aplikację w trybie deweloperskim, wpisz w terminalu polecenie:
+4. Aby uruchomić aplikację w trybie deweloperskim, wpisz w terminalu polecenie:
 
 npm start
+
+Aplikacja będzie uruchomiona w trybie deweloperskim na adresie http://localhost:3000.

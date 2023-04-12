@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './ColorItem.scss';
+import { VscChromeClose } from 'react-icons/vsc';
+import Modal from '../modal/modal';
 
 interface Props {
     color: string;
@@ -7,21 +9,40 @@ interface Props {
 }
 
 const ColorItem = ({ color }: Props) => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handleRemoveClick = () => {
-        if (window.confirm(`Czy na pewno chcesz usunąć kolor ${color}?`)) {
-            const colorsFromLocalStorage = JSON.parse(localStorage.getItem('colors') || '[]');
-            const newColors = colorsFromLocalStorage.filter((c: string) => c !== color);
-            localStorage.setItem('colors', JSON.stringify(newColors));
-            window.location.reload();
-        }
-    }
+        setIsModalOpen(true);
+    };
+
+    const handleConfirmRemove = () => {
+        const colorsFromLocalStorage = JSON.parse(localStorage.getItem('colors') || '[]');
+        const newColors = colorsFromLocalStorage.filter((c: string) => c !== color);
+        localStorage.setItem('colors', JSON.stringify(newColors));
+        window.location.reload();
+    };
+
+    const handleCancelRemove = () => {
+        setIsModalOpen(false);
+    };
 
     return (
         <div className="color-item">
-            <div className="color-item__swatch" style={{ backgroundColor: color }}></div>
-            <div className="color-item__name" style={{ backgroundColor: color }}>{color}</div>
-            <button className="color-item__remove-button" onClick={handleRemoveClick}>Usuń</button>
+            <div className="color-item__swatch" style={{ backgroundColor: color }}>
+                <div className="color-item__name" style={{ backgroundColor: color }}>
+                    {color}
+                </div>
+                <button className="color-item__remove-button" onClick={handleRemoveClick}>
+                    <VscChromeClose size={18} />
+                </button>
+            </div>
+            {isModalOpen && (
+                <Modal
+                    text={`Are you sure you want to remove color ${color} ?`}
+                    onConfirm={handleConfirmRemove}
+                    onCancel={handleCancelRemove}
+                />
+            )}
         </div>
     );
 };

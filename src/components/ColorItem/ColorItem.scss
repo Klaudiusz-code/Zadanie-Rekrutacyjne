@@ -1,0 +1,29 @@
+.color-item{
+  width: 100%;
+
+  &__swatch{
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.7rem;
+    transition: 0.1s ease-in-out;
+
+    &:hover{
+      transform: translateX(0.1rem);
+    }
+  }
+  &__name{
+    font-weight: 500;
+    color: #eceaea;
+    font-size: 1rem;
+  }
+  &__remove-button{
+
+    background: transparent;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    color: #f6f5f5;
+  }
+}

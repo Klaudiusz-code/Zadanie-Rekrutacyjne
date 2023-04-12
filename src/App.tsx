@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
 import AddColorForm from "./components/AddColorForm/AddColorForm";
 import ColorList from "./components/ColorList/ColorList";
 

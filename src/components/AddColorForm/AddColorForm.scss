@@ -1,4 +1,6 @@
 @import "src/styles/scss/mixins";
+@import "./../styles/scss/variables";
+
 .add-color-form{
   width: 100%;
   margin-top: 2rem;
@@ -9,7 +11,7 @@
   color: #fff;
 
   &__label{
-    font-size: 2rem;
+    font-size: $label-font-size;
     font-weight: 400;
     margin-bottom: 1.5rem;
   }
@@ -26,7 +28,7 @@
   &__input {
     width: 100%;
     padding: 0.7rem;
-    font-size: 1rem;
+    $input-font-size: 1rem;
     margin: 0;
     border: none;
     outline: none;
@@ -44,7 +46,7 @@
     height: 100%;
     cursor: pointer;
     border: none;
-    transition: 0.2s background-color ease-in;
+    transition: $timing-function;
 
     &:hover{
       background-color: #c77d95;

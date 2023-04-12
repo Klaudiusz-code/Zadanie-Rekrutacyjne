@@ -13,8 +13,10 @@ const AddColorForm = () => {
                 colorsFromLocalStorage.push(colorValue.toUpperCase());
                 localStorage.setItem('colors', JSON.stringify(colorsFromLocalStorage));
                 setColorValue('');
+                window.location.reload();
+
             } else {
-                alert('Nieprawidłowy kod koloru HEX RGB');
+                alert('Invalid HEX RGB color code');
             }
         }
     };
@@ -32,16 +34,21 @@ const AddColorForm = () => {
 
     return (
         <form className="add-color-form" onSubmit={handleSubmit}>
-            <label htmlFor="add-color-form__label" className="add-color-form__label">Dodaj Nowy Kolor</label>
-            <input
-                className="add-color-form__input"
-                type="text"
-                maxLength={7}
-                placeholder="#000000"
-                value={colorValue}
-                onChange={handleChange}
-                required
-            />
+            <label htmlFor="add-color-form__label" className="add-color-form__label">Add new color</label>
+            <div className="add-color-form__post">
+                <div>
+                    <input
+                        className="add-color-form__input"
+                        type="text"
+                        maxLength={7}
+                        placeholder="#000000"
+                        value={colorValue}
+                        onChange={handleChange}
+                        required
+                    />
+                </div>
+                <button type="submit" className="add-color-form__button">Add</button>
+            </div>
         </form>
     );
 };

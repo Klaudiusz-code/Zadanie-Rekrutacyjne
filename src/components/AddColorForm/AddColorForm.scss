@@ -1,9 +1,10 @@
+@import "src/styles/scss/mixins";
 .add-color-form{
   width: 100%;
   margin-top: 2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex{
+    justify-content: center;
+  }
   flex-direction: column;
   color: #fff;
 
@@ -35,7 +36,7 @@
   }
 
   &__button{
-    background: #a43558;
+    background-color: #a43558;
     color: #fdfdfd;
     width:  80px;
     font-weight: 600;
@@ -43,10 +44,10 @@
     height: 100%;
     cursor: pointer;
     border: none;
-    transition: 0.3s ease-in;
+    transition: 0.2s background-color ease-in;
 
     &:hover{
-      background: #c77d95;
+      background-color: #c77d95;
 
     }
   }
